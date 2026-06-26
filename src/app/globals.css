@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sidebar-width: 280px;
+  --chat-width: 420px;
+  --header-height: 56px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #0f172a;
+  color: #f1f5f9;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* Document preview area */
+.doc-preview {
+  background: #fff;
+  color: #1a1a1a;
+  font-family: 'Calibri', 'Segoe UI', sans-serif;
+  font-size: 11pt;
+  line-height: 1.5;
+}
+
+.doc-preview table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.doc-preview td, .doc-preview th {
+  border: 1px solid #000;
+  padding: 4px 8px;
+  vertical-align: top;
+}
+
+/* Highlight edited sections */
+.edited-highlight {
+  background: rgba(99, 102, 241, 0.15);
+  border-left: 3px solid #6366f1;
+  animation: highlight-fade 2s ease-out forwards;
+}
+
+@keyframes highlight-fade {
+  0% { background: rgba(99, 102, 241, 0.3); }
+  100% { background: rgba(99, 102, 241, 0.08); }
+}
+
+/* Chat bubbles */
+.chat-user {
+  background: #4f46e5;
+  border-radius: 18px 18px 4px 18px;
+}
+
+.chat-assistant {
+  background: #1e293b;
+  border-radius: 18px 18px 18px 4px;
+  border: 1px solid #334155;
+}
+
+/* Part card */
+.part-card {
+  transition: all 0.15s ease;
+}
+.part-card:hover {
+  border-color: #6366f1;
+  background: #1e293b;
+}
+.part-card.selected {
+  border-color: #6366f1;
+  background: #1e2040;
+  box-shadow: 0 0 0 1px #4f46e5;
+}
+
+/* Code block in XML viewer */
+.xml-viewer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.xml-tag { color: #7dd3fc; }
+.xml-attr { color: #fca5a5; }
+.xml-value { color: #86efac; }
+.xml-text { color: #e2e8f0; }
+
+/* Spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  animation: spin 0.8s linear infinite;
+}
+
+/* Loading dots */
+.loading-dots span {
+  animation: loading-dot 1.4s infinite;
+  display: inline-block;
+}
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes loading-dot {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* Resizable panels */
+[data-panel-group-direction="horizontal"] [data-panel-resize-handle-id] {
+  width: 4px;
+  background: #1e293b;
+  cursor: col-resize;
+  transition: background 0.15s;
+}
+[data-panel-group-direction="horizontal"] [data-panel-resize-handle-id]:hover {
+  background: #4f46e5;
+}
