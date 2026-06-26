@@ -3,8 +3,6 @@ import { v4 as uuid } from "uuid";
 import { unpackDocx } from "@/lib/docx";
 import { setSession } from "@/lib/sessions";
 
-export const config = { api: { bodyParser: false } };
-
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
